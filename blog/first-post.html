@@ -1,1 +1,307 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ホームページを開設しました＆後期に勉強したいこと - Yukimitsu Yamazoe</title>
+    
+    <!-- コードハイライト用ライブラリ (Highlight.js - GitHub Darkテーマ) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 
+    <!-- 数式表示用ライブラリ (MathJax) -->
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --bg-color: #f5f7fa;
+            --card-bg: #ffffff;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        /* ヘッダー（記事ページ用に少しコンパクトに） */
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.4rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        /* ナビゲーション */
+        nav {
+            background: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav .nav-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+        /* 記事メインコンテナ */
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        article {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        @media (max-width: 600px) {
+            article {
+                padding: 1.5rem;
+            }
+        }
+        /* 記事ヘッダー情報 */
+        .post-meta {
+            color: #777;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .post-date {
+            font-family: monospace;
+        }
+        .post-category {
+            background: #e1f0fa;
+            color: #2980b9;
+            padding: 0.15rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .post-title {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-top: 0.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.4;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 1rem;
+        }
+        /* 記事本文のタイポグラフィ */
+        article h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.3rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        article h3 {
+            color: var(--primary-color);
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 0.6rem;
+            margin-top: 1.8rem;
+            margin-bottom: 0.8rem;
+            font-size: 1.15rem;
+        }
+        article p {
+            margin-bottom: 1.2rem;
+        }
+        article ul, article ol {
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+        }
+        article li {
+            margin-bottom: 0.4rem;
+        }
+        /* インラインコードとコードブロック */
+        p code, li code {
+            background-color: #f0f4f8;
+            color: #e83e8c;
+            padding: 0.15rem 0.4rem;
+            border-radius: 4px;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+            font-size: 0.9em;
+        }
+        pre {
+            margin: 1.5rem 0;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+        pre code.hljs {
+            padding: 1.2rem;
+            font-family: Consolas, Monaco, 'Andale Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        /* 引用・メモブロック */
+        blockquote {
+            margin: 1.5rem 0;
+            padding: 1rem 1.2rem;
+            background-color: #f8f9fa;
+            border-left: 4px solid #95a5a6;
+            color: #555;
+            border-radius: 0 4px 4px 0;
+        }
+        /* 数式の横スクロール対応（スマホ対策） */
+        mjx-container[display="true"] {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0.5rem 0;
+        }
+        /* 戻るボタンエリア */
+        .post-footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background-color: var(--primary-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .back-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            color: #777;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="../index.html">山田 太郎 / Taro Yamada</a>
+</header>
+
+<nav>
+    <div class="nav-container">
+        <a href="../index.html">&larr; トップページへ戻る</a>
+        <a href="../index.html#blog">記事一覧</a>
+    </div>
+</nav>
+
+<div class="container">
+    <article>
+        <!-- 記事のメタ情報とタイトル -->
+        <div class="post-meta">
+            <span class="post-date">2026-10-19</span>
+            <span class="post-category">学習記録</span>
+        </div>
+        <h1 class="post-title">ホームページを開設しました＆後期に勉強したいこと</h1>
+
+        <!-- ここから本文 -->
+        <p>
+            GitHub Pagesを使って、自分のポートフォリオ兼ブログサイトを開設しました。今後はこのページに、授業や個人で学んだことのメモ、読んだ教科書のまとめなどを記録していこうと思います。
+        </p>
+
+        <h2>1. 数式（LaTeX）の表示テスト</h2>
+        <p>
+            MathJaxを導入しているため、LaTeX記法でそのまま数式を書くことができます。文中に埋め込むインライン数式は $f(x) = x^2 + 2x + 1$ や $E = mc^2$ のように <code>$</code> で囲みます。
+        </p>
+        <p>
+            独立した行に大きく表示するディスプレイ数式は <code>$$</code> で囲みます。例えば、正規分布（ガウス分布）の確率密度関数は以下のようになります。
+        </p>
+
+        $$
+        f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(x - \mu)^2}{2\sigma^2} \right)
+        $$
+
+        <p>
+            勾配降下法のパラメータ更新式なども綺麗に表示できます。
+        </p>
+
+        $$
+        \boldsymbol{w}^{(t+1)} = \boldsymbol{w}^{(t)} - \eta \nabla L(\boldsymbol{w}^{(t)})
+        $$
+
+        <h2>2. プログラムコードの表示テスト</h2>
+        <p>
+            Highlight.jsを導入しているため、<code>&lt;pre&gt;&lt;code class="language-言語名"&gt;</code> で囲むだけで自動的に色分け（シンタックスハイライト）されます。文中の変数名やコマンドは <code>numpy</code> のようにインライン表示できます。
+        </p>
+
+        <h3>Pythonのコード例</h3>
+        <pre><code class="language-python">import numpy as np
+
+def gradient_descent(df, x0, lr=0.01, epochs=100):
+    """シンプルな勾配降下法の実装"""
+    x = x0
+    for _ in range(epochs):
+        grad = df(x)
+        x = x - lr * grad
+    return x
+
+# f(x) = x^2 の最小値を求める (導関数 df(x) = 2x)
+min_x = gradient_descent(lambda x: 2 * x, x0=5.0, lr=0.1)
+print(f"Result: {min_x:.4f}")
+</code></pre>
+
+        <h2>3. 引用・メモブロックのテスト</h2>
+        <blockquote>
+            <strong>メモ：</strong> 定義や定理、本の重要な引用などはこのように <code>&lt;blockquote&gt;</code> タグで囲むと視覚的に区別しやすくなります。
+        </blockquote>
+
+        <h2>4. 後期に勉強したいこと</h2>
+        <ul>
+            <li>線形代数・確率統計の復習とPythonでの実装</li>
+            <li>アルゴリズムとデータ構造（競技プログラミングの練習）</li>
+            <li>専門書『〇〇〇〇入門』の輪読とまとめ記事の作成</li>
+        </ul>
+
+        <!-- 記事フッター -->
+        <div class="post-footer">
+            <a href="../index.html#blog" class="back-btn">&larr; 記事一覧に戻る</a>
+        </div>
+    </article>
+</div>
+
+<footer>
+    <p>&copy; 2026 Taro Yamada. Hosted on GitHub Pages.</p>
+</footer>
+
+</body>
+</html>
