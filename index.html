@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>山添 幸光 (Yukimitsu Yamazoe) - Portfolio & Blog</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --bg-color: #f5f7fa;
+            --card-bg: #ffffff;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+        /* ヘッダー */
+        header {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 2.5rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2rem;
+            letter-spacing: 1px;
+        }
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1rem;
+            opacity: 0.85;
+        }
+        /* ナビゲーション */
+        nav {
+            background: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav ul li a {
+            display: block;
+            padding: 0.8rem 1.2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        /* メインコンテナ */
+        .container {
+            max-width: 850px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        section {
+            background: var(--card-bg);
+            margin-bottom: 2rem;
+            padding: 1.8rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.4rem;
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+        h3.subsection-title {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+            border-left: 4px solid var(--secondary-color);
+            padding-left: 0.6rem;
+        }
+        /* リンクボタン（SNSなど） */
+        .links a {
+            display: inline-block;
+            margin-right: 0.8rem;
+            margin-top: 0.5rem;
+            padding: 0.4rem 0.8rem;
+            background-color: #eef2f7;
+            color: var(--primary-color);
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .links a:hover {
+            background-color: var(--secondary-color);
+            color: #fff;
+        }
+        /* 経歴（タイムライン） */
+        .timeline {
+            position: relative;
+            margin: 1rem 0 0 0.5rem;
+            padding-left: 1.5rem;
+            border-left: 2px solid #dce4ec;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 1.2rem;
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -1.95rem;
+            top: 0.35rem;
+            width: 10px;
+            height: 10px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            border: 2px solid #fff;
+        }
+        .timeline-date {
+            font-size: 0.85rem;
+            color: #666;
+            font-weight: bold;
+            font-family: monospace;
+        }
+        .timeline-content {
+            margin-top: 0.1rem;
+        }
+        .timeline-content strong {
+            color: var(--primary-color);
+        }
+        .timeline-desc {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 0.2rem 0 0;
+        }
+        /* 資格・スキルリスト */
+        .cert-list {
+            padding-left: 1.2rem;
+            margin: 0.5rem 0 0;
+        }
+        .cert-list li {
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+        }
+        /* 成果物（Works）のカードグリッド */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+        .work-card {
+            border: 1px solid #e1e8ed;
+            border-radius: 6px;
+            padding: 1.2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .work-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .work-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+        .work-card p {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 1rem;
+        }
+        .tag {
+            display: inline-block;
+            background: #e1f0fa;
+            color: #2980b9;
+            font-size: 0.75rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+            margin-right: 0.3rem;
+        }
+        .work-links {
+            margin-top: 0.8rem;
+            font-size: 0.85rem;
+        }
+        .work-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            margin-right: 0.8rem;
+            font-weight: bold;
+        }
+        /* ブログ（Blog）のリスト */
+        .blog-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .blog-list li {
+            border-bottom: 1px solid #eee;
+            padding: 0.8rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+        }
+        .blog-list li:last-child {
+            border-bottom: none;
+        }
+        .blog-date {
+            font-family: monospace;
+            color: #777;
+            margin-right: 1rem;
+            font-size: 0.95rem;
+        }
+        .blog-category {
+            font-size: 0.75rem;
+            background: #eee;
+            color: #555;
+            padding: 0.1rem 0.5rem;
+            border-radius: 3px;
+            margin-right: 0.8rem;
+        }
+        .blog-title {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            flex: 1;
+            min-width: 200px;
+        }
+        .blog-title:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 1.5rem 0;
+            color: #777;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>山添 幸光 / Yukimitsu Yamazoe</h1>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#biography">Biography (経歴)</a></li>
+        <li><a href="#works">Works (成果物)</a></li>
+        <li><a href="#blog">Blog (記事)</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <!-- 自己紹介・興味分野 -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            北海道大学理学部の2年生です。<br>
+            現在は主に場の理論や物理への純粋数学の応用に興味があり、日々勉強しています。将来は素粒子理論、ないしは統計物理学の研究室に進みたいと考えています。
+        </p>
+        <p>
+            <strong>興味・関心：</strong> QFT / 重力理論 / 可積分系 <br>
+            <strong>学んでいること：</strong> スカラー場の理論、統計力学、電磁気学、微分幾何学
+        </p>
+        <div class="links">
+            <a href="https://github.com/" target="_blank">GitHub</a>
+        </div>
+    </section>
+
+    <!-- 経歴セクション（新規追加） -->
+    <section id="biography">
+        <h2>Biography (経歴・活動)</h2>
+        
+        <h3 class="subsection-title">学歴・活動歴</h3>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2025.04 - 現在</div>
+                <div class="timeline-content">
+                    <strong>北海道大学 理学部 物理学科 入学</strong>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2025.03</div>
+                <div class="timeline-content">
+                    <strong>駒場東邦高等学校 卒業</strong>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="subsection-title">資格・受賞・その他</h3>
+        <ul class="cert-list">
+            <li>2024.08：物理チャレンジ奨励賞</li>
+        </ul>
+    </section>
+
+    <!-- 成果物セクション -->
+    <section id="works">
+        <h2>Works (成果物)</h2>
+        <p>僕が勉強したものや、個人的に書いているものを公開する場所です</p>
+    </section>
+
+    <!-- ブログセクション -->
+    <section id="blog">
+        <h2>Blog (学習記録・雑記)</h2>
+        <p>学んだことのメモや、読んだ本・論文のまとめ、日常の記録です。</p>
+        
+        <ul class="blog-list">
+            <li>
+                <span class="blog-date">2026-10-19</span>
+                <span class="blog-category">学習記録</span>
+                <a href="blog/first-post.html" class="blog-title">ホームページを開設しました＆後期に勉強したいこと</a>
+            </li>
+        </ul>
+    </section>
+
+    <!-- 連絡先 -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>
+            連絡は以下のメールアドレスまでお願いします。<br>
+            Email: yamazoe.yukimitsu.o1[at]elms.hokudai.ac.jp
+        </p>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2026 Yukimitsu Yamazoe. Hosted on GitHub Pages.</p>
+</footer>
+
+</body>
+</html>
